@@ -32,7 +32,8 @@ services:
             - byceps-db
         environment:
             APP_MODE: site
-            SITE_ID: cozylan
+            SECRET_KEY: ${SECRET_KEY}
+            SITE_ID: ${SITE_ID}
             BYCEPS_CONFIG: /home/byceps/app/config/${BYCEPS_CONFIG_FILE}
             REDIS_URL: "redis://byceps-redis/0"
             SQLALCHEMY_DATABASE_URI: "postgresql+psycopg2://${POSTGRES_USER}:${POSTGRES_PASSWORD}@byceps-db/${POSTGRES_DB}"
@@ -41,7 +42,6 @@ services:
             # used for nginx sharing
             - ${VOLUME_BASE_PATH}/byceps-app/data:/home/byceps/app/data
             - ${VOLUME_BASE_PATH}/byceps-app/sites:/home/byceps/app/sites
-            - ${VOLUME_BASE_PATH}/byceps-app/byceps/static:/home/byceps/app/byceps/static
         networks:
             - database-net
             - nginx-net
@@ -55,7 +55,8 @@ services:
             - byceps-db
         environment:
             APP_MODE: admin
-            SITE_ID: cozylan
+            SECRET_KEY: ${SECRET_KEY}
+            SITE_ID: ${SITE_ID}
             BYCEPS_CONFIG: /home/byceps/app/config/${BYCEPS_CONFIG_FILE}
             REDIS_URL: "redis://byceps-redis/0"
             SQLALCHEMY_DATABASE_URI: "postgresql+psycopg2://${POSTGRES_USER}:${POSTGRES_PASSWORD}@byceps-db/${POSTGRES_DB}"
@@ -64,7 +65,6 @@ services:
             # used for nginx sharing
             - ${VOLUME_BASE_PATH}/byceps-app/data:/home/byceps/app/data
             - ${VOLUME_BASE_PATH}/byceps-app/sites:/home/byceps/app/sites
-            - ${VOLUME_BASE_PATH}/byceps-app/byceps/static:/home/byceps/app/byceps/static
         networks:
             - database-net
             - nginx-net
@@ -79,7 +79,8 @@ services:
             - byceps-db
         environment:
             APP_MODE: base
-            SITE_ID: cozylan
+            SECRET_KEY: ${SECRET_KEY}
+            SITE_ID: ${SITE_ID}
             BYCEPS_CONFIG: /home/byceps/app/config/${BYCEPS_CONFIG_FILE}
             REDIS_URL: "redis://byceps-redis/0"
             SQLALCHEMY_DATABASE_URI: "postgresql+psycopg2://${POSTGRES_USER}:${POSTGRES_PASSWORD}@byceps-db/${POSTGRES_DB}"
@@ -88,7 +89,6 @@ services:
             # used for nginx sharing
             - ${VOLUME_BASE_PATH}/byceps-app/data:/home/byceps/app/data
             - ${VOLUME_BASE_PATH}/byceps-app/sites:/home/byceps/app/sites
-            - ${VOLUME_BASE_PATH}/byceps-app/byceps/static:/home/byceps/app/byceps/static
         networks:
             - database-net
             - nginx-net
@@ -107,7 +107,7 @@ services:
             # for byceps static files sharing to nginx
             - ${VOLUME_BASE_PATH}/byceps-app/data:/var/www/byceps/data
             - ${VOLUME_BASE_PATH}/byceps-app/sites:/var/www/byceps/sites
-            - ${VOLUME_BASE_PATH}/byceps-app/byceps/static:/var/www/byceps/byceps/static
+            - ${VOLUME_BASE_PATH}/byceps-nginx/cache:/var/www/cache
         networks:
             - nginx-net
 

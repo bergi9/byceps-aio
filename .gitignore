@@ -3,3 +3,4 @@ byceps-db
 byceps-app/byceps
 byceps-app/data
 byceps-app/sites
+byceps-nginx/cache
