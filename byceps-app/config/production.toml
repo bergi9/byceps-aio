@@ -1,0 +1,11 @@
+# Exemplary production configuration
+
+# Enable this if you want a tool like Sentry
+# handle exceptions rather than Flask.
+PROPAGATE_EXCEPTIONS = false
+
+# Set a custom secret key before running in production!
+# To generate one:
+#     $ byceps generate-secret-key
+# uncomment next line if you want use SECRET_KEY from config file instead from env
+#SECRET_KEY = ""
